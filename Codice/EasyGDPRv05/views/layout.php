@@ -159,34 +159,34 @@
             var duration = moment.duration(moment(event_passed_notifications[j].end_date,'YYYY-MM-DD HH:mm').diff(moment()));
             var hours = parseInt(duration.asHours());
             var minutes = parseInt(duration.asMinutes());
-            hours = hours + 1;
+         //   hours = Math.abs(hours) + 1;
             
             var noty_type = 'error'
     
             var notification_id = event['id']+'-'+hours
             var already_showed_notifications = Noty_getCookie().split('|');
             if(!already_showed_notifications.includes(notification_id)){
-              if ( hours < 2 ) {
-                new Noty({
-              text: "Sei in ritardo di "+Math.abs(minutes)+" minuti per l'evento '"+event_passed_notifications[j].name+"'",
-              layout   : 'topRight',
-              theme    : 'relax',
-              type : noty_type,
-              closeWith: ['click', 'button'],
-              callbacks: {
-              onShow: function() {
-                },
-              onClose: function() {
-                Noty_setCookie(Noty_getCookie()+'|'+notification_id)
-              },
-            },
-            animation: {
-             open : 'animated fadeInRight',
-           //      close: 'animated fadeOutRight'
-            }
-            }).show();
+          //     if ( hours > 1 ) {
+          //       new Noty({
+          //     text: "Sei in ritardo di "+Math.abs(minutes)+" minuti per l'evento '"+event_passed_notifications[j].name+"'",
+          //     layout   : 'topRight',
+          //     theme    : 'relax',
+          //     type : noty_type,
+          //     closeWith: ['click', 'button'],
+          //     callbacks: {
+          //     onShow: function() {
+          //       },
+          //     onClose: function() {
+          //       Noty_setCookie(Noty_getCookie()+'|'+notification_id)
+          //     },
+          //   },
+          //   animation: {
+          //    open : 'animated fadeInRight',
+          //  //      close: 'animated fadeOutRight'
+          //   }
+          //   }).show();
 
-              } else {
+          //     } else {
             new Noty({
               text: "Sei in ritardo di "+Math.abs(hours)+" ore per l'evento '"+event_passed_notifications[j].name+"'",
               layout   : 'topRight',
@@ -205,7 +205,7 @@
            //      close: 'animated fadeOutRight'
             }
             }).show();
-              }
+              
            }
          }
         }
