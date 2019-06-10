@@ -2,9 +2,12 @@
 
 
 // DEFAULT MONTH/YEAR = TODAY
-$unix = strtotime("today");
-$monthNow = date("M", $unix);
-$yearNow = date("Y", $unix); 
+// $unix = strtotime("today");
+// $monthNow = date("M", $unix);
+// $yearNow = date("Y", $unix); 
+
+// the html page creates a botton which redirect the user to the create page; 
+// we create the legend with the type of the events (icons) and the urgency of the events (colored rectangles)
 
 $event_urgency = [
 	"#4357AD",
@@ -63,13 +66,11 @@ $event_type = [
 	</script>
   </head>
 
-  /**
-   * the html page creates a botton which redirect the user to the create page;
-   * we create the legend with the type of the events (icons) and the urgency of the events (colored rectangles)
-   */
+
+
 
   <body>
-
+  
 	<div class="col-11" style="text-align: right;">
 	  	<a class="btn btn-primary" href='?controller=events&action=create_page'>&nbsp;Crea nuovo evento&nbsp;</a>
 	</div>
