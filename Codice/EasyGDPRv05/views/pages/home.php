@@ -15,7 +15,7 @@
 				<!-- Image as an icon and a button that redirects the user on the calendar page -->
 				<div class="col-md-4">
 				<p>
-				<img style="width:40%" src="src/calendar-icon.png">
+				<a href='?controller=events&action=calendar'> <img style="width:40%" src="src/calendar-icon.png"></a>
 				</p>						
 						<a class="btn btn-secondary" href='?controller=events&action=calendar' role="button">Calendario »</a>
 				</div>
@@ -24,14 +24,14 @@
 				<!-- Image as an icon and a button that redirects the user on the events page -->
 				<div class="col-md-4">
 				<p>
-				<img style="width:40%" src="src/event-icon.png">
+				<a href='?controller=events&action=index'> <img style="width:40%" src="src/event-icon.png" ></a>
 				</p>						
 						<p><a class="btn btn-secondary" href='?controller=events&action=index' role="button">  &nbsp; &nbsp; Eventi » &nbsp; &nbsp; </a></p>
 				</div>
 				<!-- Image as an icon and a button that redirects the user on the manual page -->
 				<div class="col-md-4">
 				<p>
-				<img style="width:40%" src="src/manual-icon.png">
+				<a href='?controller=pages&action=manual'> <img style="width:40%" src="src/manual-icon.png"></a>
 				</p>						
 						<p><a class="btn btn-secondary" href='?controller=pages&action=manual' role="button"> &nbsp; Manuale » &nbsp;</a></p>
 			    </div>

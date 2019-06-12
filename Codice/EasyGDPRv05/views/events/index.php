@@ -1,7 +1,7 @@
 <?php 
 	if ($flash && $flash == true){	
 ?>
-
+<body onload="documentdocument.location.reload(true);">
  
 <!-- shows a message if the event is deleted  -->
 <div class="alert alert-success">
@@ -35,6 +35,7 @@
 				</tr>
 			</thead>
 			<tbody>
+			
 				<?php foreach($events as $event) { ?>
 					<tr>
 						<td style="text-align: center;"><?php echo $event->name; ?></td>

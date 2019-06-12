@@ -20,7 +20,8 @@
 				$( "#start_date" ).daterangepicker({
 						singleDatePicker: true,
 						showDropdowns: true,
-						minYear: 1901,
+						minYear: 2000,
+						maxYear: 2022,
 						timePicker: true,
 						timePicker24Hour: true,
 						locale: {
@@ -31,7 +32,8 @@
 				$( "#end_date" ).daterangepicker({
 						singleDatePicker: true,
 						showDropdowns: true,
-						minYear: 1901,
+						minYear: 2000,
+						maxYear: 2022,
 						timePicker: true,
 						timePicker24Hour: true,
 						locale: {

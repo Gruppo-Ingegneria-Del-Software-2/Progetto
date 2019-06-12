@@ -23,6 +23,8 @@ ini_set('display_errors', true);
   $controllers = array('pages' => ['home', 'error', 'manual'],
 
                        'events' => ['index', 'show', 'create_page', 'calendar', 'edit_page']);
+                       
+                       
 
 
   if (array_key_exists($controller, $controllers)) {

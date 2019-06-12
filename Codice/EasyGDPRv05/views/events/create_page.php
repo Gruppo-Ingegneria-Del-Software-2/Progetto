@@ -13,13 +13,14 @@
 
 		<script>
 			/**
-			 * the user can choose the start date and end date of the event
+			 * the user can choose the start date and the end date of the event
 			 */
 			document.addEventListener('DOMContentLoaded', function() {
 				$( "#start_date" ).daterangepicker({
 						singleDatePicker: true,
 						showDropdowns: true,
-						minYear: 1901,
+						minYear: 2000,
+						maxYear: 2022,
 						timePicker: true,
 						timePicker24Hour: true,
 						locale: {
@@ -30,7 +31,8 @@
 				$( "#end_date" ).daterangepicker({
 						singleDatePicker: true,
 						showDropdowns: true,
-						minYear: 1901,
+						minYear: 2000,
+						maxYear: 2022,
 						timePicker: true,
 						timePicker24Hour: true,
 						locale: {
@@ -75,6 +77,9 @@
 					 * if the event's type is "Cancellazione dati personali" or "Rettifica dei dati" the urgency changes to "urgente"
 					 */
 					if( valueSelected == 2 || valueSelected == 3 ){
+						var selected_start = moment($('#start_date').data('daterangepicker').startDate.format('YYYY-MM-DD H:mm'))
+						var end_date = selected_start.add(1, 'hours').format("DD/MM/YYYY H:mm");
+						$('#end_date').data('daterangepicker').setStartDate(end_date + " "+$('#start_date').data('daterangepicker').startDate.format('H:mm'));
 						$('#urgenza').val(2);
 					}
 
@@ -82,6 +87,9 @@
 					 *  if  the event's type is  "Meeting/Conferenza"or "Altro" the urgency changes to "non urgente"
 					 */
 					if( valueSelected == 4 || valueSelected == 5 ){
+						var selected_start = moment($('#start_date').data('daterangepicker').startDate.format('YYYY-MM-DD H:mm'))
+						var end_date = selected_start.add(1, 'hours').format("DD/MM/YYYY H:mm");
+						$('#end_date').data('daterangepicker').setStartDate(end_date + " "+$('#start_date').data('daterangepicker').startDate.format('H:mm'));
 						$('#urgenza').val(1);
 					}
 				});
@@ -90,22 +98,41 @@
   </head>
   <body>
 
+  
+  <!-- /* Do work */
+  if(isset($_REQUEST["destination"])){
+      header("Location: {$_REQUEST["destination"]}");
+  }else if(isset($_SERVER["HTTP_REFERER"])){
+      header("Location: {$_SERVER["HTTP_REFERER"]}");
+  }else{
+       /* some fallback, maybe redirect to index.php */
+  }  -->
+  
 
-	  <?php if ($flash && $flash == true){
-			?>
+
+	  <?php
+	  
+ if ($flash == true){?>
 			<!-- if the event is saved then it shows the following alert -->
 			<div class="alert alert-success">
 				<strong>Operazione eseguita con successo.</strong> <?php echo $message; ?>.
 			</div> 
+			<!-- <script>
+              alert('Operazione eseguita con successo.'); 
+              window.history.go(-2);
+             </script>; -->
 			<?php }; ?>
-			<div class="col-12" style="text-align: right;">
-			<!-- creates a botton to return to the previous page -->
-			<button class="btn btn-primary"  onclick="history.go(-1);">Indietro </button>
 			
+			<!-- creates a button to return to the previous page -->
+			<div class="col-12" style="text-align: right;">
+				<a class="btn btn-primary"  onclick="history.back(-2);">Indietro </a>
+				<!--  -->
 			</div>
+			
 	<h1 style="text-align: center;">Nuovo Evento</h1>
 
-	<form  id="new_event" class="container form-signin" method="get" autocomplete="off">
+	<form  
+	id="new_event" class="container form-signin" method="get" autocomplete="off">
 		<input type="hidden" name="controller" value="events">
 		<input type="hidden" name="action" value="create_page">
 
@@ -113,7 +140,7 @@
         <!-- creates a form-group where the user can select the type of the event -->
 		<div class="form-group">
 		<label for="sel1">Tipologia:</label>
-		<select class="operatori" id="sel1" name="type">
+		<select class="operatori" id="sel1" name="type" required="">
 			<option disabled selected value>--</option>
 			<option value="1">Comunicazione Data Breach</option>
 			<option value="2">Cancellazione dati personali</option>
@@ -156,13 +183,14 @@
 		</select>
 		</div>
 		
-		<!-- creates a botton for the creation of the event -->
+		<!-- creates a button for the creation of the event -->
 		<div class="form-group">
 		
-			<button class="btn btn-primary col-md-12 create_product" type="submit" >Crea</button>
+			<button class="btn btn-primary col-md-12 " type="submit" >Crea</button>
+			<!-- <a class="btn btn-primary" href='?controller=events&action=index' type="submit">Crea</a> -->
 		</div>
-
 		
+		<!-- <input type="submit" value="Submit"> -->
 	</form>
 
 
