@@ -50,7 +50,7 @@ of an event using a table. -->
 					</tr>
 					<tr>
 					<th>Dettagli</th>
-					<td><?php echo $event->details; ?></td>
+					<td style="white-space:pre-wrap; word-wrap:break-word"><?php echo $event->details; ?></td>
 					</tr>
 					<tr>
 					<th>Urgenza</th>
