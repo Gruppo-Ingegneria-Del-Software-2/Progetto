@@ -17,7 +17,7 @@
 		<h1>Eventi</h1>
 		</div>
 		<div class="col-12" style="text-align: right;">
-			<a class="btn btn-primary" href='?controller=events&action=create_page'>Crea nuovo evento</a>
+			<a class="btn btn-primary" href='?controller=events&action=create_page&from=events'>Crea nuovo evento</a>
 		</div>
 	</div>
 	<!-- creates a table of the events with the following attributes: name, type, urgency, completed -->

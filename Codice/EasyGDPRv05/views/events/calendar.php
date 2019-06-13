@@ -72,7 +72,7 @@ $event_type = [
   <body>
   
 	<div class="col-11" style="text-align: right;">
-	  	<a class="btn btn-primary" href='?controller=events&action=create_page'>&nbsp;Crea nuovo evento&nbsp;</a>
+	  	<a class="btn btn-primary" href='?controller=events&action=create_page&from=calendar'>&nbsp;Crea nuovo evento&nbsp;</a>
 	</div>
 
 	<hr>

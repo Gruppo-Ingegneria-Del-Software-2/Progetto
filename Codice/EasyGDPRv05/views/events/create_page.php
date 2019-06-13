@@ -125,9 +125,21 @@
 			
 			<!-- creates a button to return to the previous page -->
 			<div class="col-12" style="text-align: right;">
-				<a class="btn btn-primary"  onclick="history.back(-2);">Indietro </a>
+				<a class="btn btn-primary"  href=<?php
+
+				if (isset($_GET["from"])){
+					if ($_GET["from"] === "calendar") {
+						echo "?controller=events&action=calendar";
+					} else if ($_GET["from"] === "events"){
+						echo "?controller=events&action=index";
+					}
+				}
+			 ?>>Indietro</a>
 				<!--  -->
 			</div>
+
+			
+			
 			
 	<h1 style="text-align: center;">Nuovo Evento</h1>
 
@@ -135,6 +147,8 @@
 	id="new_event" class="container form-signin" method="get" autocomplete="off">
 		<input type="hidden" name="controller" value="events">
 		<input type="hidden" name="action" value="create_page">
+
+		<input type="hidden" name="from" value=<?php if (isset($_GET["from"])){ echo $_GET["from"]; } ?>>
 
 		
         <!-- creates a form-group where the user can select the type of the event -->
@@ -153,18 +167,18 @@
         <!-- creates a form-group where the user can select the start_date of the event -->
 		<div class="form-group">
 		<label>Data ed ora inizio evento</label>
-		<input class="form-control " value="<?php echo date("d/m/Y H:i");?>" type="text" placeholder="Data inizio evento" aria-label="Data inizio evento" name="start_date" id="start_date" required="">
+		<input class="form-control " value="<?php echo date("d/m/Y H:i");?>" type="text" placeholder="Data inizio evento" aria-label="Data inizio evento" name="start_date" id="start_date" required="" onkeydown="return event.key != 'Enter';">
 		</div>		
 		<!-- creates a form-group where the user can select the end_date of the event -->
 		<div class="form-group">
 		<label>Data ed ora fine evento</label>
-		<input class="form-control " value="<?php echo date("d/m/Y H:i");?>" type="text" placeholder="Data fine evento" aria-label="Data fine evento" name="end_date" id="end_date" required="">
+		<input class="form-control " value="<?php echo date("d/m/Y H:i");?>" type="text" placeholder="Data fine evento" aria-label="Data fine evento" name="end_date" id="end_date" required="" onkeydown="return event.key != 'Enter';">
 		</div>
 		
         <!-- creates a text area where the user can name the event -->
 		<div class="form-group">
 		<label>Titolo</label>
-		<input class="form-control " type="text" placeholder="Titolo" aria-label="titolo" name="name" id="name" required="">
+		<input class="form-control " type="text" placeholder="Titolo" aria-label="titolo" name="name" id="name" required="" onkeydown="return event.key != 'Enter';">
 		</div>
 		<!-- creates a text area where the user can write details for the event -->
 		<div class="form-group">
