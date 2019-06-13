@@ -54,9 +54,25 @@
 				<strong>Operazione eseguita con successo.</strong> <?php echo $message; ?>.
 			</div> 
 			<?php }; ?>
-			<div class="col-12" style="text-align: right;">
+			<!-- <div class="col-12" style="text-align: right;"> -->
 			<!-- creates a button to return to the previous page -->
-			<button class="btn btn-primary"  onclick="history.go(-1);">Indietro </button>
+			<div class="col-12" style="text-align: right;">
+				<a class="btn btn-primary"  href=<?php
+
+				if (isset($_GET["show"])){
+					if ($_GET["show"] === "true") {
+						?>
+						'?controller=events&action=show&id=<?php echo $event->id; ?>&from=<?php if (isset($_GET["from"])){ echo $_GET["from"]; } ?>'
+						<?php
+					}
+				} else if (isset($_GET["from"]) ){
+					if ($_GET["from"] === "calendar") {
+						echo "?controller=events&action=calendar";
+					} else if ($_GET["from"] === "events"){
+						echo "?controller=events&action=index";
+					}
+				}
+			 ?>>Indietro</a>
 			</div>
 
 	<h1 style="text-align: center;">Modifica evento: <?php echo $event->name;?></h1>
@@ -65,6 +81,14 @@
 		<input type="hidden" name="controller" value="events">
 		<input type="hidden" name="action" value="edit_page">
 		<input type="hidden" name="id" value="<?php echo $_GET['id']?>">
+
+		<input type="hidden" name="from" value=<?php if (isset($_GET["from"])){ echo $_GET["from"]; } ?>>
+
+		<?php if (isset($_GET["show"])){ ?>
+		<input type="hidden" name="show" value=<?php echo $_GET["show"]; ?>>
+	    <?php } ?>
+
+
 		<div class="form-group">
 
 		<!-- creates a form-group where the user can change the type of the event -->
@@ -86,17 +110,17 @@
 		
 		
 		<!-- creates a form-group where the user can change the end date -->
-	    <input class="form-control " value="<?php echo $event->start_date;?>" type="text" placeholder="Data inizio evento" aria-label="Data inizio evento" name="start_date" id="start_date" required="">
+	    <input class="form-control " value="<?php echo $event->start_date;?>" type="text" placeholder="Data inizio evento" aria-label="Data inizio evento" name="start_date" id="start_date" required="" onkeydown="return event.key != 'Enter';">
 		</div>		
 		<div class="form-group">
 		<label>Data ed ora fine evento</label>
-		<input class="form-control " value="<?php echo $event->end_date;?>" type="text" placeholder="Data fine evento" aria-label="Data fine evento" name="end_date" id="end_date" required="">
+		<input class="form-control " value="<?php echo $event->end_date;?>" type="text" placeholder="Data fine evento" aria-label="Data fine evento" name="end_date" id="end_date" required="" onkeydown="return event.key != 'Enter';">
 		</div>
 
 		<!-- creates a text area where the user can change the name the event -->
 		<div class="form-group">
 		<label>Titolo</label>
-		<input class="form-control " type="text" placeholder="Titolo" aria-label="titolo" name="name" id="name" required="" value="<?php echo $event->name;?>">
+		<input class="form-control " type="text" placeholder="Titolo" aria-label="titolo" name="name" id="name" required="" value="<?php echo $event->name;?>" onkeydown="return event.key != 'Enter';">
 		</div>
 		<!-- creates a text area where the user can change the details of the event -->
 		<div class="form-group">

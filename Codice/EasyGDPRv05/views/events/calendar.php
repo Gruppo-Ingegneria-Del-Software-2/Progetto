@@ -53,7 +53,7 @@ $event_type = [
 							<?php foreach ($events as $event): ?>
 							{
 									title: "<?php echo $event_type[$event->type-1], " ", $event->name; ?>",
-									url: "<?php echo $_SERVER['REQUEST_URI'];?>/?controller=events&action=show&id=<?php echo $event->id; ?>",
+									url: "<?php echo $_SERVER['REQUEST_URI'];?>/?controller=events&action=show&id=<?php echo $event->id; ?>&from=calendar",
 									color: "<?php echo $event_urgency[$event->urgency-1]; ?>",
 									start: "<?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $event->start_date);  echo $date->format('Y-m-d'); ?>",
 									end: "<?php $date = DateTime::createFromFormat('Y-m-d H:i:s', $event->end_date);  echo $date->format('Y-m-d') ?>",

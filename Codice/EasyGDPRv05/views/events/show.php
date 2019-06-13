@@ -4,8 +4,17 @@ of an event using a table. -->
 	<div class="col-12">
 		<h1>Evento: <b><?php echo $event->name; ?></b></h1>
 		<div class="col-12" style="text-align: right;">
-			<a class="btn btn-primary" href='?controller=events&action=edit_page&id=<?php echo $event->id; ?>'>Modifica</a>
-			<button class="btn btn-primary"  onclick="history.go(-1);">Indietro </button>
+			<a class="btn btn-primary" href='?controller=events&action=edit_page&id=<?php echo $event->id; ?>&from=<?php if (isset($_GET["from"])){ echo $_GET["from"]; } ?>&show=true'>Modifica</a>
+			<a class="btn btn-primary"  href=<?php
+
+				if (isset($_GET["from"])){
+					if ($_GET["from"] === "calendar") {
+						echo "?controller=events&action=calendar";
+					} else if ($_GET["from"] === "events"){
+						echo "?controller=events&action=index";
+					}
+				}
+			 ?>>Indietro</a>
 		</div>
 	<div class="table-responsive">
 		<table class="table table-striped" >

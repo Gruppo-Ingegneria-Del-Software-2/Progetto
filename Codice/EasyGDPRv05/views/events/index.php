@@ -60,8 +60,8 @@
 						
 						<div style="text-align: right;">
 						<!-- creates buttons to visualise and edit -->
-						<a class="btn btn-md" href='?controller=events&action=show&id=<?php echo $event->id; ?>'>Visualizza</a>
-						<a class="btn btn-md" href='?controller=events&action=edit_page&id=<?php echo $event->id; ?>'>Modifica</a>
+						<a class="btn btn-md" href='?controller=events&action=show&id=<?php echo $event->id; ?>&from=events'>Visualizza</a>
+						<a class="btn btn-md" href='?controller=events&action=edit_page&id=<?php echo $event->id; ?>&from=events'>Modifica</a>
 						</div>
 						</td>
 						<td>
