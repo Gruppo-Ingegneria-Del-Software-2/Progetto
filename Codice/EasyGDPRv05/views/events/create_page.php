@@ -51,6 +51,15 @@
 						$('#end_date').data('daterangepicker').setStartDate(end_date + " "+$('#start_date').data('daterangepicker').startDate.format('H:mm'));
 						$('#urgenza').val(3);
 					}
+					if( $('#sel1').val() != 1 ){
+						var selected_start = moment($('#start_date').data('daterangepicker').startDate.format('YYYY-MM-DD H:mm'))
+						var end_date = selected_start.add(1, 'hours').format("DD/MM/YYYY H:mm");
+
+						$('#end_date').data('daterangepicker').setStartDate(end_date + " "+$('#start_date').data('daterangepicker').startDate.format('H:mm'));
+						$('#urgenza').val(3);
+
+					}
+
 				}) 
 				
 				// On change
@@ -89,7 +98,7 @@
 					if( valueSelected == 4 || valueSelected == 5 ){
 						var selected_start = moment($('#start_date').data('daterangepicker').startDate.format('YYYY-MM-DD H:mm'))
 						var end_date = selected_start.add(1, 'hours').format("DD/MM/YYYY H:mm");
-						$('#end_date').data('daterangepicker').setStartDate(end_date + " "+$('#start_date').data('daterangepicker').startDate.format('H:mm'));
+						$('#end_date').data('daterangepicker').setStartDate(end_date + " "+$('#start_date').data('daterangepicker').startDate.format('DD/MM/YYYY H:mm'));
 						$('#urgenza').val(1);
 					}
 				});

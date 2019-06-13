@@ -4,8 +4,8 @@
 <script>
 
 </script>
-<link href="notify/themes/relax.css" rel="stylesheet">
-<script src="notify/noty.js" type="text/javascript"></script>
+<link href="src/notify/themes/relax.css" rel="stylesheet">
+<script src="src/notify/noty.js" type="text/javascript"></script>
 <script src="src/index.js" type="text/javascript"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 
